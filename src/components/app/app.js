@@ -17,7 +17,7 @@ class App extends Component {
                 {name: 'Carl W.', salary: 5000, increase: false, rise: false, id: 3},
             ],
             term: '', 
-            filter: 'rise'
+            filter: 'all'
         }
         this.maxId = 4
     }
@@ -102,8 +102,13 @@ class App extends Component {
         this.setState({filter})
     }
 
-    oncheckForWalkin = () => {
-        console.log('im here')
+    onChangeSalary = (id, salary) => {
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === id) return {...item, salary: salary}
+            return item
+            })
+        }))
     }
 
     render() {
@@ -129,7 +134,8 @@ class App extends Component {
                 <EmployeesList 
                 data={visibleData}
                 onDelete={this.deleteItem}
-                onToggleProp={this.onToggleProp}/>
+                onToggleProp={this.onToggleProp}
+                onChangeSalary={this.onChangeSalary}/>
                 <EmployeesAddForm onAdd={this.addItem}/>
             </div>
         )

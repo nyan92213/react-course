@@ -14,10 +14,15 @@
     min-width: 550px;
 }
 
+.list-group-item .dollar {
+    min-width: 20px;
+    text-align: center;
+}
+
 .list-group-item input {
     line-height: 35px;
     font-size: 20px;
-    text-align: center;
+    text-align: right;
     border: 0;
 }
 
